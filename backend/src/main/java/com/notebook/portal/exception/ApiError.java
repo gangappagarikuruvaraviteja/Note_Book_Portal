@@ -1,0 +1,14 @@
+package com.notebook.portal.exception;
+
+import java.time.Instant;
+import lombok.Builder;
+import lombok.Getter;
+
+@Getter
+@Builder
+public class ApiError {
+    private Instant timestamp;
+    private int status;
+    private String message;
+    private String path;
+}
