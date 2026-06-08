@@ -6,6 +6,8 @@ export default function NotebookDetails() {
   const { id } = useParams();
   const [notebook, setNotebook] = useState(null);
   const [summary, setSummary] = useState("");
+  const [loadingSummary, setLoadingSummary] = useState(false);
+  const [summaryError, setSummaryError] = useState("");
 
   useEffect(() => {
     const load = async () => {
@@ -16,8 +18,25 @@ export default function NotebookDetails() {
   }, [id]);
 
   const handleSummary = async () => {
-    const data = await fetchSummary(id);
-    setSummary(data.summary);
+    setLoadingSummary(true);
+    setSummaryError("");
+    try {
+      const data = await fetchSummary(id);
+      const s = data.summary || "";
+      const placeholderKeywords = ["AI disabled", "OPENAI_API_KEY", "GROK_API_KEY", "AI enabled but", "AI request failed"];
+      const isPlaceholder = placeholderKeywords.some((k) => s.includes(k));
+      if (!s || isPlaceholder) {
+        setSummary("");
+        setSummaryError(s || "No AI output returned.");
+      } else {
+        setSummary(s);
+      }
+    } catch (error) {
+      setSummary("");
+      setSummaryError(error?.response?.data?.summary || error?.response?.data?.message || error?.message || "Summary generation failed.");
+    } finally {
+      setLoadingSummary(false);
+    }
   };
 
   const handleDownload = async () => {
@@ -45,18 +64,26 @@ export default function NotebookDetails() {
             Download
           </button>
           <button
-            className="rounded-full border border-accent px-5 py-2 text-sm font-semibold text-accent"
+            className="rounded-full border border-accent px-5 py-2 text-sm font-semibold text-accent disabled:cursor-not-allowed disabled:opacity-60"
             onClick={handleSummary}
+            disabled={loadingSummary}
           >
-            Generate summary
+            {loadingSummary ? "Generating..." : "Generate summary"}
           </button>
         </div>
-        {summary && (
-          <div className="mt-6 rounded-2xl bg-white p-4">
-            <p className="text-xs uppercase text-slate/60">AI Summary</p>
-            <p className="mt-2 text-sm text-slate/70">{summary}</p>
+        {summaryError && (
+          <div className="mt-6 rounded-2xl border border-rose-100 bg-rose-50 p-4 text-sm text-rose-700 animate-fade-up">
+            {summaryError}
           </div>
         )}
+        <div className={`mt-6 rounded-2xl bg-white p-4 transition-opacity duration-500 ${summary ? 'opacity-100' : 'opacity-0 h-0 overflow-hidden'}`}>
+          {summary && (
+            <>
+              <p className="text-xs uppercase text-slate/60">AI Summary</p>
+              <p className="mt-2 text-sm text-slate/70">{summary}</p>
+            </>
+          )}
+        </div>
       </div>
     </section>
   );
