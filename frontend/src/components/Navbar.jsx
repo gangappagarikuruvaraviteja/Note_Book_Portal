@@ -16,8 +16,9 @@ export default function Navbar() {
           </NavLink>
           {user ? (
             <>
-              <NavLink className="hover:text-accent" to="/dashboard">
+              <NavLink className="hover:text-accent flex items-center" to="/dashboard">
                 Dashboard
+                <span className="ml-2 inline-block h-2 w-2 rounded-full bg-green-500" aria-hidden="true" />
               </NavLink>
               <NavLink className="hover:text-accent" to="/upload">
                 Upload
