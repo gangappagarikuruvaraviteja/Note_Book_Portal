@@ -13,15 +13,15 @@ export default function Dashboard() {
         </div>
       </div>
       <div className="mt-8 grid gap-6 md:grid-cols-3">
-        <StatCard label="Uploads" value="12" />
-        <StatCard label="Downloads" value="314" />
-        <StatCard label="Average rating" value="4.6" />
+        <StatCard label="Uploads" value="0" />
+        <StatCard label="Downloads" value="0" />
+        <StatCard label="Average rating" value="0.0" />
       </div>
       <div className="mt-8 rounded-3xl bg-white/80 p-6 shadow-xl">
         <h3 className="font-heading text-xl text-slate">Next steps</h3>
         <p className="mt-2 text-sm text-slate/70">
-          Upload your latest notes, request AI summaries, and share verified content
-          with peers.
+          No dashboard activity yet. Upload your first notebook to start tracking
+          stats, AI summaries, and downloads.
         </p>
       </div>
     </section>
