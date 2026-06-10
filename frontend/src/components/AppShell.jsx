@@ -6,8 +6,8 @@ export default function AppShell({ children }) {
   const [chatOpen, setChatOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-slate-50">
-      <div className="mx-auto flex min-h-screen max-w-[1400px] overflow-hidden rounded-[28px] border border-slate-200 bg-white shadow-[0_8px_40px_rgba(15,23,42,0.08)]">
+    <div className="min-h-screen w-full overflow-hidden bg-slate-50">
+      <div className="flex min-h-screen w-full">
         <aside className="relative flex w-[280px] flex-col border-r border-slate-200 bg-[#f8fafc]">
           <div className="border-b border-slate-200 px-3 py-3">
             <div className="flex items-start gap-3">
@@ -72,7 +72,7 @@ export default function AppShell({ children }) {
             </div>
 
             <div className="flex-1 px-10 py-12">
-              <div className="mx-auto max-w-5xl">
+              <div className="w-full">
                 {children}
               </div>
             </div>

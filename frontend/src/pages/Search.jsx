@@ -26,7 +26,7 @@ export default function Search() {
   };
 
   return (
-    <section className="mx-auto max-w-6xl px-6 py-12">
+    <section className="flex flex-col gap-6">
       <div className="flex flex-col gap-6">
         <form className="grid gap-4 md:grid-cols-5" onSubmit={handleSearch}>
           <input
