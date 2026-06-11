@@ -11,19 +11,19 @@ export default function AppShell({ children }) {
         <aside className="relative flex w-[280px] flex-col border-r border-slate-200 bg-[#f8fafc]">
           <div className="border-b border-slate-200 px-3 py-3">
             <div className="flex items-start gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-900 text-white shadow-sm">
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-accent to-orange-600 text-white shadow-md">
                 <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" d="M4 5.5A1.5 1.5 0 015.5 4h4A1.5 1.5 0 0111 5.5v13A1.5 1.5 0 019.5 20h-4A1.5 1.5 0 014 18.5v-13zM13 5.5A1.5 1.5 0 0114.5 4h4A1.5 1.5 0 0120 5.5v13a1.5 1.5 0 01-1.5 1.5h-4a1.5 1.5 0 01-1.5-1.5v-13z" />
                 </svg>
               </div>
               <div className="leading-tight">
-                <div className="text-[22px] font-semibold text-slate-900">Notebook</div>
-                <div className="text-sm text-slate-500">Portal</div>
+                <div className="text-[22px] font-bold text-slate-900">Notebook</div>
+                <div className="text-sm font-medium text-accent">Portal</div>
               </div>
             </div>
 
-            <button className="mt-3 flex w-full items-center gap-3 rounded-xl bg-slate-900 px-4 py-3 text-left font-semibold text-white shadow-sm transition hover:bg-slate-800">
-              <span className="text-xl leading-none">+</span>
+            <button className="mt-3 flex w-full items-center gap-3 rounded-xl bg-gradient-to-r from-accent to-orange-600 px-4 py-3 text-left font-semibold text-white shadow-md transition hover:shadow-lg hover:scale-105">
+              <span className="text-xl leading-none font-bold">+</span>
               <span>New Note</span>
             </button>
           </div>
